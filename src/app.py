@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, request, redirect, url_for, render_template, session, flash
 import requests
-from routes.auth import auth
+from src.routes.auth import auth
 import mysql.connector
 
 app = Flask(__name__)
