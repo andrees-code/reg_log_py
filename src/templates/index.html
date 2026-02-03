@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/sass.css">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">{{title}}</h1>
+        <div class="botones">
+            {% if session.get('logged_in') == True %}
+            <a href="{{url_for('index')}}"><button>🏡 HOME 🏡</button></a>
+            <a href="{{url_for('favoritos')}}"><button>⭐️ VER FAVORITOS ⭐️</button></a>
+            <a href="{{url_for('auth.logout')}}"><button>CERRAR SESIÓN</button></a>
+            {% else %}
+            <a href="{{url_for('auth.login')}}"><button>LOGIN</button></a>
+            <a href="{{url_for('auth.register')}}"><button>REGISTER</button></a>
+            {% endif %}
+    
+        </div>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <ul style="color: {% if category == 'danger'%}red{% elif category == 'success'%} green{% elif category == 'info'%}blue {%endif%};">
+        <li>{{message}}</li>
+    </ul>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+    {% if characters %}
+    <div class="card_grid">
+    {% for character in characters %}
+        
+        <div class="card">
+            <h1>{{character.name}}</h1>
+            <img src="{{character.image}}">
+                <form method="post">
+                    <input type="hidden" name="char_id" value="{{ character.id }}">
+                    <input type="hidden" name="char_name" value="{{ character.name }}">
+                    <input type="hidden" name="char_img" value="{{ character.image }}">
+                    
+                    <button type="submit" >⭐️ FAVORITOS</button>
+                </form>
+
+        </div>  
+    
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block content %}
+    <div class="form">
+    {% block form %}
+    {% endblock %}
+    </div>
+    {% endblock %}
+
+</body>
+</html>

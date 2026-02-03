@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block content %}
+{% if favoritos %}
+<div class="card_grid">
+{% for favorito in favoritos %}
+<div class="card">
+    <h1>{{favorito.char_name}}</h1>
+    <img src="{{favorito.char_img}}" alt="">
+    <form method="post">
+        <input type="hidden" name="char_id" value="{{ favorito.char_id }}">
+        <button type="submit">ELIMINAR FAVORITO 🚫</button>
+    </form>
+
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+.header button {
+  padding: 10px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form_centrado {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  max-width: 15%;
+  text-align: center;
+}
+
+.card_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 10px;
+}
+
+.card {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: 10px;
+  border: 1px solid black;
+}
+.card form {
+  display: flex;
+  justify-content: center;
+}
+.card form button {
+  padding: 10px;
+}/*# sourceMappingURL=sass.css.map */
